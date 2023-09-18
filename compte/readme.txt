@@ -1,5 +1,7 @@
 - Arthur - 
 
+Veillez à ne pas toucher au dossier compte pour ne pas créer des conflits avec mes catégories.
+
 J'ai commencé à faire les dossiers pour chaque catégorie qui me concerne : 
 badge, barre de progression, login, niveau 
 
