@@ -45,7 +45,7 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
         <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base burger"
             href="#">
             <svg class="u-svg-link" viewBox="0 0 24 24">
               <use xlink:href="#menu-hamburger"></use>
@@ -173,11 +173,11 @@
               </div>
             </div>
             <div
-              class="u-align-center u-container-align-center u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1"
+              class="u-align-center u-container-align-center u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1 depop"
               src="" data-image-width="2683" data-image-height="1500">
               <img class="img-language" src="/site/images/ProgrammingLanguage1-1.jpg" alt="" height="400px"
                 width="1000px">
-              <div class="u-container-layout u-container-layout-2" src=""></div>
+              <div class="u-container-layout u-container-layout-2 depop" src=""></div>
             </div>
           </div>
         </div>
@@ -267,9 +267,9 @@
         <div class="u-layout">
           <div class="u-layout-row">
             <div
-              class="u-align-center u-container-align-center u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1"
+              class="u-align-center u-container-align-center u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1 depop"
               src="" data-image-width="1000" data-image-height="1500">
-              <div class="u-container-layout u-container-layout-1" src="">
+              <div class="u-container-layout u-container-layout-1 depop" src="">
                 <img class="img-language" src="/site/images/bob-imagination.jpg" alt="" height="400" width="400"
                   style="padding-top: 80px;">
               </div>
@@ -324,7 +324,7 @@
   </section>
 
   <style>
-    @media (max-width:600px) {
+    @media (max-width:768px) {
       .img-language {
         display: none;
       }
@@ -333,8 +333,17 @@
         display: none;
       }
 
-      .carousel_af32 {
-        height: max-content;
+      .depop {
+        display: none;
+      }
+
+      .u-section-2,
+      .u-section-4 {
+        max-height: fit-content;
+      }
+
+      .u-nav-1 {
+        display: none;
       }
     }
   </style>
