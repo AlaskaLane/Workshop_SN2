@@ -66,24 +66,24 @@
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#"
                 style="padding: 10px 40px; color: #ffffff; font-size: 30px; font-family: 'Roboto', sans-serif;  ">Home</a>
             </li>-->
-            <li class=" u-nav-item"><a
+            <li class=" u-nav-item" id="non-resp"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 href="questionnaire.html"
-                style="padding: 10px 40px; color: #ffffff; font-size: 30px ;font-family: 'Roboto', sans-serif;">Questionnaire</a>
+                style="padding: 10px 20px; color: #ffffff; font-size: 30px ;font-family: 'Roboto', sans-serif;">Questionnaire</a>
             </li>
-            <li class="u-nav-item"><a
+            <li class="u-nav-item" id="non-resp"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 href="cours marcandella.html"
-                style="padding: 10px 40px; color: #ffffff;font-size: 30px ; font-family: 'Roboto', sans-serif;">Leçons</a>
+                style="padding: 10px 20px; color: #ffffff;font-size: 30px ; font-family: 'Roboto', sans-serif;">Leçons</a>
             </li>
-            <li class="u-nav-item"><a
+            <li class="u-nav-item" id="non-resp"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 href="compte.html"
-                style="padding: 10px 40px; color: #ffffff;font-size: 30px; font-family: 'Roboto', sans-serif;">Connexion</a>
+                style="padding: 10px 20px; color: #ffffff;font-size: 30px; font-family: 'Roboto', sans-serif;">Connexion</a>
             </li>
-            <li class="u-nav-item"><a
+            <li class="u-nav-item" id="non-resp"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#"
-                style="padding: 10px 40px; color: #ffffff;font-size: 30px; font-family: 'Roboto', sans-serif;">Contact</a>
+                style="padding: 10px 20px; color: #ffffff;font-size: 30px; font-family: 'Roboto', sans-serif;">Contact</a>
             </li>
           </ul>
         </div>
@@ -92,13 +92,13 @@
             <div class="u-inner-container-layout u-sidenav-overflow">
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Home</a>
+                <!--<li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Home</a>-->
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="questionnaire.html">Quuestionnaire</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="questionnaire.html">Questionnaire</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Leçons</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="cours marcandella.html">Leçons</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Connexion</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="compte.html">Connexion</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Contact</a>
                 </li>
@@ -126,6 +126,7 @@
     <style>
       .test {
         opacity: 40%;
+
         filter: grayscale(100%);
       }
     </style>
@@ -173,7 +174,8 @@
             <div
               class="u-align-center u-container-align-center u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1"
               src="" data-image-width="2683" data-image-height="1500">
-              <img src="/site/images/ProgrammingLanguage1-1.jpg" alt="" height="400px" width="1000px">
+              <img class="img-language" src="/site/images/ProgrammingLanguage1-1.jpg" alt="" height="400px"
+                width="1000px">
               <div class="u-container-layout u-container-layout-2" src=""></div>
             </div>
           </div>
@@ -267,7 +269,8 @@
               class="u-align-center u-container-align-center u-container-style u-image u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-image-1"
               src="" data-image-width="1000" data-image-height="1500">
               <div class="u-container-layout u-container-layout-1" src="">
-                <img src="/site/images/bob-imagination.jpg" alt="" height="400" width="400" style="padding-top: 80px;">
+                <img class="img-language" src="/site/images/bob-imagination.jpg" alt="" height="400" width="400"
+                  style="padding-top: 80px;">
               </div>
             </div>
             <div
@@ -318,6 +321,22 @@
       <span>ipsum</span>
     </a>.-->
   </section>
+
+  <style>
+    @media (max-width:600px) {
+      .img-language {
+        display: none;
+      }
+
+      .non-resp {
+        display: none;
+      }
+
+      .carousel_af32 {
+        height: max-content;
+      }
+    }
+  </style>
 
 </body>
 
