@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,20 +7,77 @@
 
 <h2>Badges</h2>
 <h2>
-    <button onclick="myFunction()">Click here</button>
-    <p class="badge-1" id="demo"></p>
-
-    <script>
-        var imagejavascript = document.createElement("img")
-        imagejavascript.src = "icon/php_icon.png"
-        function myFunction(){
-            document.body.appendChild(imagejavascript)
-            document.getElementById("demo").innerHTML = ("Coucou c'est PAtrick t'as validé ton module espèce de noob");
-        }
-    </script>
-
+    <button onclick="htmlFunction()">HTML Achievement</button>
+    <audio id="audio" src="son/sound.mp3"></audio>
+    <div class="modal" id="modal">
+        <div class="modal-back"></div>
+        <div class="modal-container">
+            <img src="icon/html_icon.png" alt="" height="30" width="40">
+            Félicitations tu as validé ton module HTML  <br />
+            <a href="#" id="modal-close">[x]</a>
+        </div>
+    </div>
+    <br>
     
+    <button onclick="cssFunction()">CSS Achievement</button>
+    <div class="modal" id="modal-1">
+        <div class="modal-back"></div>
+        <div class="modal-container">
+            <img src="icon/css_icon.png" alt="" height="30" width="40">
+            Félicitations tu as validé ton module CSS  <br />
+            <a href="#" id="modal-close-1">[x]</a>
+        </div>
+    </div>
+    <br>
+
+    <button onclick="phpFunction()">PHP Achievement</button>
+    <audio id="audio" src="son/sound.mp3"></audio>
+    <div class="modal" id="modal-2">
+        <div class="modal-back"></div>
+        <div class="modal-container">
+            <img src="icon/php_icon.png" alt="" height="30" width="40">
+            Félicitations tu as validé ton module PHP  <br />
+            <a href="#" id="modal-close-2">[x]</a>
+        </div>
+    </div>
+    <br>
+
+    <button onclick="infraFunction()">Infra Achievement</button>
+    <div class="modal" id="modal-3">
+        <div class="modal-back"></div>
+        <div class="modal-container">
+            <img src="icon/deploiement_infra_icon.png" alt="" height="30" width="40">
+            Félicitations tu as validé ton module Infra <br />
+            <a href="#" id="modal-close-3">[x]</a>
+        </div>
+    </div>
+    <br>
+    
+    <button onclick="linuxFunction()">Linux Achievement</button>
+    <audio id="audio" src="son/sound.mp3"></audio>
+    <div class="modal" id="modal-4">
+        <div class="modal-back"></div>
+        <div class="modal-container">
+            <img src="icon/linux_icon.png" alt="" height="30" width="40">
+            Félicitations tu as validé ton module Linux  <br />
+            <a href="#" id="modal-close-4">[x]</a>
+        </div>
+    </div>
+    <br>
+
+    <button onclick="domotiqueFunction()">Domotique Achievement</button>
+    <div class="modal" id="modal-5">
+        <div class="modal-back"></div>
+        <div class="modal-container">
+            <img src="icon/domotique_icon.png" alt="" height="30" width="40">
+            Félicitations tu as validé ton module Domotique <br />
+            <a href="#" id="modal-close-5">[x]</a>
+        </div>
+    </div>
+    <br>
+
 </h2>
 </body>
 <link rel="stylesheet" href="badge.css">
+<script src="badge.js"></script>
 </html>

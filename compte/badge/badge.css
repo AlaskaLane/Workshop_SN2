@@ -6,55 +6,8 @@ p {
     font-size: medium;
 }
 
-@keyframes pop-up {
-  from {
-  bottom: -150px;
-
-  }
-
-  to {
-  bottom : 10px;
-  }
-}
-@keyframes pop-up-reverse {
-    from {
-    top: 150px;
-
-    }
-  
-    to {
-    top : 10px;
-    }
-  }
-.badge-1 {
-    background-color: rgb(19, 19, 129);
-    color: white;
-    display: inline-block;
-    padding: 2% ;
-    position: absolute;
-    bottom : 10px;
-    right: 1%;
-    border-radius: 15px;
-    animation-duration: 1s;
-    animation-name: pop-up;
-    
-  }
-
-.badge-2 {
-    background-color: rgb(19, 19, 129);
-    color: white;
-    display: inline-block;
-    padding: 2% ;
-    position: absolute;
-    bottom : 10px;
-    left: 1%;
-    border-radius: 15px;
-    animation-duration: 1s;
-    animation-name: pop-up;
-  }
-
   button {
-    background-color: #d86b38;
+    background-color: #e4803e;
     border-radius: 10px;
     border: 2px;
     color: #FFFFFF;
@@ -64,4 +17,28 @@ p {
     width: 150px;
     cursor: pointer;
     margin: 20px;
+  }
+
+  .modal {
+    display: none;
+  }
+  .modal-back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba( 0, 0, 0, .25 )
+  }
+  .modal-container {
+    font-size: 20px;
+    position: fixed;
+    text-align: center;
+    width: 30%;
+    top: 90%;
+    left: 90%;
+    padding: 2%;
+    background: white;
+    border-radius: 20px;
+    transform: translate(-73%, -50%)
   }
