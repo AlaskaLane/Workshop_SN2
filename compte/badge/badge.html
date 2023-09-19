@@ -6,12 +6,20 @@
 <body>
 
 <h2>Badges</h2>
-<p>Create a badge and pin it to a heading:</p>
 <h2>
-    <div class="badge">
-            <img src="icon/php_icon.png" alt="" width="40" height="40">
-            <p>Félicitations, vous avez fini le module php !   </p>
-    </div>
+    <button onclick="myFunction()">Click here</button>
+    <p class="badge-1" id="demo"></p>
+
+    <script>
+        var imagejavascript = document.createElement("img")
+        imagejavascript.src = "icon/php_icon.png"
+        function myFunction(){
+            document.body.appendChild(imagejavascript)
+            document.getElementById("demo").innerHTML = ("Coucou c'est PAtrick t'as validé ton module espèce de noob");
+        }
+    </script>
+
+    
 </h2>
 </body>
 <link rel="stylesheet" href="badge.css">

@@ -7,4 +7,4 @@ badge, barre de progression, login, niveau
 
 Pour chaque catégorie je vais commencer par faire des tests et voir des tutos.
 
-Pour l'instant je vais commencer les logins (forms, inscription, connexion, php)
+Pour l'instant je vais commencer les logins (forms, inscription, connexion, php) mais finalement je vais me tourner sur les badges 
