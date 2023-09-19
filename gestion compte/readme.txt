@@ -15,3 +15,9 @@ J'ai réussi à faire les achievements pour chaque module
 
 Je me suis dit que ce serait bien de pouvoir faire la pop up après chaque validation de module.
 
+- Update 12:26 19/09/2023 -
+
+J'ai fini les badges et commencé la partie compte pour pouvoir prendre de l'avance avant l'ouverture de l'hébergement ce soir.
+
+Pour l'instant la table `users` a été créer dans la partie inscription
+
