@@ -1,7 +1,12 @@
 <?php
 include "db.php";
-
 session_start();
+
+// Vérifiez si l'utilisateur est déjà connecté, redirigez-le vers compte.php
+if (isset($_SESSION["pseudo"])) {
+    header("Location: compte.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire

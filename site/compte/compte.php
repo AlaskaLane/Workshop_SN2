@@ -59,7 +59,7 @@ if ($result) {
         <p id="blocliens">
         <a href="logout.php"id="lienpres">Déconnexion</a>
             <a href="reset-password.html"id="lienpres">Réinitialiser votre mot de passe</a>
-            <a href="site\index.html"id="lienpres">Accueil</a>
+            <a href="../index.html"id="lienpres">Accueil</a>
         </p>
     </div>
 </body>
