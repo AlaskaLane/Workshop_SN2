@@ -7,13 +7,29 @@ if (!isset($_SESSION["pseudo"])) {
     exit();
 }
 
-// Inclure le fichier de connexion à la base de données
+// Inclure le fichier de connexion à la base de données (db.php)
 include("db.php");
 
 // Récupérer le nom d'utilisateur de la session
 $pseudo = $_SESSION["pseudo"];
 
-// Vous pouvez ajouter d'autres fonctionnalités ici, comme afficher les données de l'utilisateur, des liens vers d'autres pages, etc.
+// Récupérer le statut de modérateur de l'utilisateur depuis la base de données
+$sql = "SELECT moderateur FROM compte WHERE pseudo = '$pseudo'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $statutMod = (int)$row["moderateur"];
+    
+    if ($statutMod === 1) {
+        $statut = "Modérateur";
+    } else {
+        $statut = "Utilisateur Standard";
+    }
+} else {
+    // En cas d'erreur, considérer l'utilisateur comme un utilisateur standard
+    $statut = "Utilisateur Standard";
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,66 +44,23 @@ $pseudo = $_SESSION["pseudo"];
 
 <body>
     <div class="container">
-        <h2>Bienvenue, <?php echo $pseudo; ?> !</h2>
-        <p id="txtpres">C'est votre page de gestion de compte.</p>
+        <h2>Bienvenue, <?php echo $pseudo; ?>!</h2>
+        <p>Statut : <?php echo $statut; ?></p>
+        
+        <?php if ($statutMod === 1) { ?>
+            <!-- Section pour les modérateurs -->
+            <p>Vous avez des fonctionnalités de modérateur.</p>
+            <!-- Ajoutez ici les fonctionnalités spécifiques aux modérateurs -->
+        <?php } else { ?>
+            <!-- Section pour les utilisateurs standards -->
+            <p>Vous avez des fonctionnalités d'utilisateur standard.</p>
+            <!-- Ajoutez ici les fonctionnalités spécifiques aux utilisateurs -->
+        <?php } ?>
         <p id="blocliens">
-            <a href="logout.php" id="lienpres">Déconnexion</a>
-            <a href="reset-password.html" id="lienpres">Réinitialiser votre mot de passe</a>
-            <a href="../index.html" id="lienpres">Accueil</a>
+        <a href="logout.php"id="lienpres">Déconnexion</a>
+            <a href="reset-password.html"id="lienpres">Réinitialiser votre mot de passe</a>
+            <a href="site\index.html"id="lienpres">Accueil</a>
         </p>
-    </div>
-
-    <div class="background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
     </div>
 </body>
 
