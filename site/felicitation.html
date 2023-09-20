@@ -37,9 +37,14 @@
                 // Lecture de l'audio
                 let myAudio = document.querySelector('#audio');
                 myAudio.play();
+        
+                // Fermer automatiquement la pop-up après 1 seconde
+                setTimeout(function () {
+                    document.getElementById('modal').style.display = 'none';
+                }, 1000); // 1000 millisecondes équivalent à 1 seconde
             });
         
-            // Gestionnaire d'événement pour fermer la pop-up
+            // Gestionnaire d'événement pour fermer la pop-up si l'utilisateur clique sur la croix
             document.getElementById('modal-close').addEventListener('click', function (e) {
                 e.preventDefault(); // Empêche le lien de rediriger
                 document.getElementById('modal').style.display = 'none';
