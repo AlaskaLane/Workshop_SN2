@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="felicitation.css">
     <link rel="stylesheet" href="../site/badge/badge.css">
     <title>Gestion Compte</title>
-</head>
+    <style>
+        body {
+            position: relative;
+        }
 
+        #confetti-canvas {
+            position: fixed;
+            z-index: -1; /* Met le canvas en arrière-plan */
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .container {
+            /* Votre style pour le conteneur principal ici */
+            margin: auto; /* Centre le contenu */
+            max-width: 800px; /* Ajustez la largeur selon vos besoins */
+            padding: 20px;
+            background-color: #fff; /* Couleur d'arrière-plan du conteneur */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Exemple d'ombre */
+            z-index: 1; /* Place le contenu au-dessus du canvas */
+            position: relative; /* Permet de positionner les éléments enfants */
+        }
+    </style>
+</head>
 <body>
     <div class="container">
         <h2>Bravo !
-            <?php echo $pseudo; ?> Tu a réussi le module !
+            <?php echo $pseudo; ?> Tu as réussi le module !
         </h2>
+        <canvas id="confetti-canvas"></canvas>
+        
         <!-- <p id="txtpres">C'est votre page de gestion de compte.</p> -->
         <p id="blocliens">
             <!-- <a href="logout.php" id="lienpres">Déconnexion</a>
@@ -27,32 +53,67 @@
                 Félicitations tu as validé ton module HTML  <br />
                 <a href="#" id="modal-close">x</a>
             </div>
-        </div>  
-        <script>
-            // Attend que la page soit chargée
-            document.addEventListener('DOMContentLoaded', function () {
-                // Affiche la pop-up
-                document.getElementById('modal').style.display = 'block';
-                
-                // Lecture de l'audio
-                let myAudio = document.querySelector('#audio');
-                myAudio.play();
-        
-                // Fermer automatiquement la pop-up après 1 seconde
-                setTimeout(function () {
-                    document.getElementById('modal').style.display = 'none';
-                }, 1000); // 1000 millisecondes équivalent à 1 seconde
-            });
-        
-            // Gestionnaire d'événement pour fermer la pop-up si l'utilisateur clique sur la croix
-            document.getElementById('modal-close').addEventListener('click', function (e) {
-                e.preventDefault(); // Empêche le lien de rediriger
-                document.getElementById('modal').style.display = 'none';
-            });
-        </script>
-        
-        
+        </div>
     </div>
+    <!-- Canvas des confettis -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script>
+        // Attend que la page soit chargée
+        document.addEventListener('DOMContentLoaded', function () {
+            // Affiche la pop-up
+            document.getElementById('modal').style.display = 'block';
+            
+            // Lecture de l'audio
+            let myAudio = document.querySelector('#audio');
+            myAudio.play();
+
+            // Fermer automatiquement la pop-up après 1 seconde
+            setTimeout(function () {
+                document.getElementById('modal').style.display = 'none';
+            }, 10000); // 1000 millisecondes équivalent à 1 seconde
+
+            // Gestionnaire d'événement pour déclencher les confettis au clic sur le fond
+            document.body.addEventListener('click', function () {
+                triggerConfetti();
+            });
+        });
+
+        // Gestionnaire d'événement pour fermer la pop-up si l'utilisateur clique sur la croix
+        document.getElementById('modal-close').addEventListener('click', function (e) {
+            e.preventDefault(); // Empêche le lien de rediriger
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        // Fonction pour déclencher les confettis
+        function triggerConfetti() {
+            var myConfetti = confetti.create(document.querySelector('#confetti-canvas'), {
+                resize: true,
+                useWorker: true
+            });
+            myConfetti({
+                particleCount: 100,
+                spread: 160
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        const canvas = document.querySelector('#confetti-canvas');
+        function onButtonClick(){
+            var myConfetti = confetti.create(canvas, {
+                resize: true,
+                useWorker: true
+            });
+            myConfetti({
+                particleCount: 100,
+                spread: 160
+            });
+        }
+
+        // Appeler la fonction lors du chargement de la page
+        document.addEventListener('DOMContentLoaded', onButtonClick);
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <ul class="background">
         <li></li>
         <li></li>
@@ -106,3 +167,6 @@
         <li></li>
     </ul>
 </body>
+</html>
+
+

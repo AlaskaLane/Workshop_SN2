@@ -1,0 +1,34 @@
+<!-- HTML -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script type="text/javascript">
+  const canvas = document.querySelector('#confetti-canvas');
+  function onButtonClick(){
+    var myConfetti = confetti.create(canvas, {
+      resize: true,
+      useWorker: true
+    });
+    myConfetti({
+      particleCount: 100,
+      spread: 160
+    });
+  }
+  
+  // Appeler la fonction lors du chargement de la page
+  document.addEventListener('DOMContentLoaded', onButtonClick);
+</script>
+
+<!-- CSS -->
+<style>
+#confetti-canvas {
+  position: fixed; 
+  z-index: 999; 
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  pointer-events: none;
+}
+</style>
