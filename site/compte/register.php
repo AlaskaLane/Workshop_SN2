@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if ($conn->query($sql) === TRUE) {
         echo "Inscription réussie. Vous pouvez vous connecter.";
-        header("Location: index.html");
+        header("Location: compte.php");
     } else {
         echo "Erreur lors de l'inscription: " . $conn->error;
     }
