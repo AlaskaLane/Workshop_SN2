@@ -41,12 +41,14 @@ if ($result_badges) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="compte.css">
     <title>Gestion Compte</title>
 </head>
+
 <body>
     <div class="container">
         <h2>Bienvenue, <?php echo $pseudo; ?>, tu es plus intelligent que Brutus félicitations !</h2>
@@ -55,7 +57,7 @@ if ($result_badges) {
         <h3>Vos badges de récompense :</h3>
         <ul>
             <?php foreach ($badges as $badge) { ?>
-                <li><?php echo $badge; ?></li>
+            <li><?php echo $badge; ?></li>
             <?php } ?>
         </ul>
         <p id="blocliens">
@@ -64,5 +66,58 @@ if ($result_badges) {
             <a href="site\index.html" id="lienpres">Accueil</a>
         </p>
     </div>
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </body>
+
 </html>
