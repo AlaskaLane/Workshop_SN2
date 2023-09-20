@@ -3,7 +3,7 @@ session_start();
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION["pseudo"])) {
-    header("Location: index.html"); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+    header("Location: login.html"); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
     exit();
 }
 
@@ -26,7 +26,7 @@ $pseudo = $_SESSION["pseudo"];
 </head>
 <body>
     <div class="container">
-        <h2>Bienvenue, <?php echo $pseudo; ?>, tu es plus intelligent que Brutus félicitations !</h2>
+        <h2>Bienvenue, <?php echo $pseudo; ?> !</h2>
         <p id="txtpres">C'est votre page de gestion de compte.</p>
         <p id="blocliens">
             <a href="logout.php"id="lienpres">Déconnexion</a>
