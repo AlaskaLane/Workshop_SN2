@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css\register.css">
     <title>Inscription</title>
 </head>
 <body>
@@ -11,56 +11,69 @@
         <h2>Inscription</h2>
         <form action="register.php" method="POST">
             <div class="input-container">
-                <label for="pseudo">Pseudo</label>
+                <label for="pseudo">Pseudo (Obligatoire)</label>
                 <input type="text" id="pseudo" name="pseudo" required>
             </div>
             <div class="input-container">
-                <label for="nom">Nom</label>
+            <div class="input-container">
+                <label for="password">Mot de passe (Obligatoire)</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-container">
+                <label for="nom">Nom (Obligatoire)</label>
                 <input type="text" id="nom" name="nom" required>
             </div>
             <div class="input-container">
-                <label for="prenom">Prénom</label>
+                <label for="prenom">Prénom (Obligatoire)</label>
                 <input type="text" id="prenom" name="prenom" required>
             </div>
             <div class="input-container">
-                <label for="naissance">Date de naissance</label>
+                <label for="naissance">Date de naissance (Obligatoire)</label>
                 <input type="date" id="naissance" name="naissance" required>
             </div>
             <div class="input-container">
-                <label for="Adresse_1">Addresse_1</label>
-                <input type="text" id="Adresse_1" name="Adresse_1" >
-            </div>
-            <div class="input-container">
-                <label for="Adresse_2">Addresse_2</label>
-                <input type="text" id="Adresse_2" name="Adresse_2" >
-            </div>
-            <div class="input-container">
-                <label for="CP">Code Postal</label>
-                <input type="number" id="CP" name="CP" placeholder="xxxxx">
-            </div>
-            <div class="input-container">
-                <label for="ville">Ville</label>
-                <input type="text" id="ville" name="ville">
-            </div>
-            <div class="input-container">
-                <label for="telephone">Numéro de téléphone</label>
+                <label for="telephone">Numéro de téléphone (Obligatoire)</label>
                 <input type="tel" id="telephone" name="telephone" required>
             </div>
             <div class="input-container">
-                <label for="mail">Email</label>
+                <label for="mail">Email (Obligatoire)</label>
                 <input type="email" id="mail" name="mail" required>
             </div>
             <div class="input-container">
-                <label for="sexe">Sexe</label>
-                <input type="text" id="sexe" name="sexe">
-            </div>
-            <div class="input-container"></div>
-                <label for="niveau">Niveau</label>
+                <label for="niveau">Niveau (Obligatoire)</label>
                 <input type="text" id="niveau" name="niveau" required>
+            </div>
+            <div class="input-container">
+                <label for="auto_evaluation_dev">Auto-évaluation développement (Obligatoire)</label>
+                <input type="text" id="auto_evaluation_dev" name="auto_evaluation_dev" required>
+            </div>
+            <div class="input-container">
+                <label for="auto_evaluation_reseau">Auto-évaluation réseau (Obligatoire)</label>
+                <input type="text" id="auto_evaluation_reseau" name="auto_evaluation_reseau" required>
+            </div>
+            <div class="input-container">
+                <label for="Adresse_1">Adresse_1 (Optionnel)</label>
+                <input type="text" id="Adresse_1" name="Adresse_1">
+            </div>
+            <div class="input-container">
+                <label for="Adresse_2">Adresse_2 (Optionnel)</label>
+                <input type="text" id="Adresse_2" name="Adresse_2">
+            </div>
+            <div class="input-container">
+                <label for="CP">Code Postal (Optionnel)</label>
+                <input type="number" id="CP" name="CP" placeholder="xxxxx" maxlength="5">
+            </div>
+            <div class="input-container">
+                <label for="ville">Ville (Optionnel)</label>
+                <input type="text" id="ville" name="ville">
+            </div>
+            <div class="input-container">
+                <label for="sexe">Sexe (Optionnel)</label>
+                <input type="text" id="sexe" name="sexe">
             </div>
             <button type="submit">S'inscrire</button>
         </form>
-        <p>Déjà un compte ? <a href="index.html">Connectez-vous ici</a></p>
+        <p>Déjà un compte ? <a href="login.html">Connectez-vous ici</a></p>
     </div>
 </body>
 </html>

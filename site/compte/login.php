@@ -6,7 +6,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
-    $username = $_POST["username"] or $email =$_POST["email"];
+    $pseudo =$_POST["pseudo"];
     $password = $_POST["password"];
     
     
@@ -16,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Requête pour récupérer l'utilisateur avec le nom d'utilisateur donné
-    $sql = "SELECT * FROM users WHERE username = '$username' OR email ='$email' AND password = '$password'";
+    $sql = "SELECT * FROM compte WHERE pseudo ='$pseudo' AND password = '$password'";
     $result = $conn->query($sql);
     
     if ($result->num_rows == 1) {
-        $_SESSION["username"] = $username; // Création de la session
-        header("Location: home.php"); // Redirection vers la page d'accueil
+        $_SESSION["pseudo"] = $pseudo; // Création de la session
+        header("Location: compte.php"); // Redirection vers la page d'accueil
     } else {
         echo "Nom d'utilisateur ou mot de passe incorrect.";
     }

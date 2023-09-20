@@ -4,6 +4,7 @@ include "db.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $Pseudo = $_POST["pseudo"];
+    $Password = $_POST["password"];
     $Nom = $_POST["nom"];
     $Prenom = $_POST["prenom"];
     $Naissance = $_POST["naissance"];
@@ -20,17 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Validation des données (vous devez ajouter des validations appropriées)
     
+    // Hasher le mot de passe avec Bcrypt
+    $hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
     
     // Vérification de la connexion
     if ($conn->connect_error) {
         die("Échec de la connexion à la base de données: " . $conn->connect_error);
     }
     
-    // Insertion des données dans la table des utilisateurs
-    $sql = "INSERT INTO compte (Pseudo, Nom, Prenom, Naissance, Adresse_1, Adresse_2, CP, Ville, Tel, Mail, Sexe, Niveau, Auto_Evaluation_Dev, Auto_Evaluation_Reseau) VALUES ('$Pseudo', '$Nom', '$Prenom', '$Naissance','$Adresse_1', '$Adresse_2','$CP', '$Ville','$Tel', '$Mail','$Sexe', '$Niveau', '$Auto_Evaluation_Dev', '$Auto_Evaluation_Reseau' )";
+    // Insertion des données dans la table des utilisateurs avec le mot de passe hashé
+    $sql = "INSERT INTO compte (pseudo, password, nom, prenom, naissance, adresse_1, adresse_2, cp, ville, tel, mail, sexe, niveau, auto_evaluation_dev, auto_evaluation_reseau) VALUES ('$Pseudo', '$hashedPassword', '$Nom', '$Prenom', '$Naissance','$Adresse_1', '$Adresse_2','$CP', '$Ville','$Tel', '$Mail','$Sexe', '$Niveau', '$Auto_Evaluation_Dev', '$Auto_Evaluation_Reseau' )";
     
     if ($conn->query($sql) === TRUE) {
         echo "Inscription réussie. Vous pouvez vous connecter.";
+        header("Location: index.html");
     } else {
         echo "Erreur lors de l'inscription: " . $conn->error;
     }

@@ -4,16 +4,12 @@ body {
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .container {
-    width: 100%;
-    max-width: 400px;
-    background-color: #e6f7ff; /* Fond bleu clair */
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -46,7 +42,7 @@ input[type="number"],
 input[type="email"] {
     width: 95%;
     padding: 10px;
-    border: 1px solid grey;
+    border: 1px solid black;
     border-radius: 3px;
     transition: border-color 0.3s ease; /* Ajout d'une transition sur la couleur de bordure */
 }
@@ -82,38 +78,9 @@ button:hover {
 
 /* Liens de navigation */
 p a {
-    display: inline-flex;
-    justify-content: center;
     text-align: center;
-    text-decoration: none;
-    color: dodgerblue;
-}
-
-#txtpres {
-    text-align: center;
-}
-#blocliens {
-    display: inline-flex;
-    justify-content: center;
-}
-
-#lienpres {
-    background-color: dodgerblue;
-    border-radius: 10px;
-    border: 2px;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 20px;
-    padding: 15px;
-    width: 140px;
-    cursor: pointer;
-    margin: 20px;
-}
-
-#lienpres:hover {
-    color: rgb(255, 255, 255);
-    background-color: rgb(123, 200, 129);
-    transition: ease-in-out 0.1s;
+    display: block;
+    margin-top: 10px;
 }
 
 /* Lien de retour */
