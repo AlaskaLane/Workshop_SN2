@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="felicitation.css">
+    <link rel="stylesheet" href="../site/badge/badge.css">
+    <script src="../site/badge/badge.js"></script>
     <title>Gestion Compte</title>
 </head>
 
@@ -18,7 +20,16 @@
             <!-- <a href="logout.php" id="lienpres">Déconnexion</a>
             <a href="reset-password.html" id="lienpres">Réinitialiser votre mot de passe</a> -->
             <a href="../site/index.html" id="lienpres">Accueil</a>
-        </p>
+        </p><audio id="audio" src="../site/badge/son/sound.mp3"></audio>
+        <div class="modal" id="modal">
+            <div class="modal-back"></div>
+            <div class="modal-container">
+                <img src="../site/badge/icon/html_icon.webp" alt="" height="30" width="40">
+                Félicitations tu as validé ton module HTML  <br />
+                <a href="#" id="modal-close">x</a>
+            </div>
+        </div>  
+        
     </div>
     <ul class="background">
         <li></li>
