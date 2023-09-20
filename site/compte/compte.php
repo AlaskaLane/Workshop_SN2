@@ -58,8 +58,9 @@ if ($result) {
         <?php } ?>
         <p id="blocliens">
         <a href="logout.php"id="lienpres">Déconnexion</a>
-            <a href="reset-password.html"id="lienpres">Réinitialiser votre mot de passe</a>
-            <a href="../index.html"id="lienpres">Accueil</a>
+        <a href="reset-password.html"id="lienpres">Réinitialiser votre mot de passe</a>
+        <a href="../felicitation.html"id="lienpres">Validation de module</a>
+        <a href="../index.html"id="lienpres">Accueil</a>
         </p>
     </div>
 </body>
