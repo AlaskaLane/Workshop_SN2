@@ -46,6 +46,7 @@
             <a href="reset-password.html" id="lienpres">Réinitialiser votre mot de passe</a> -->
             <a href="../site/index.html" id="lienpres">Accueil</a>
         </p><audio id="audio" src="../site/badge/son/sound.mp3"></audio>
+        </p><audio id="audio-confetti" src="../site/badge/son/sound_confetti.mp3"></audio>
         <div class="modal" id="modal">
             <div class="modal-back"></div>
             <div class="modal-container">
@@ -67,6 +68,9 @@
             // Lecture de l'audio
             let myAudio = document.querySelector('#audio');
             myAudio.play();
+
+            let confettiAudio = document.querySelector('#audio-confetti');
+            confettiAudio.play();
 
             // Fermer automatiquement la pop-up après 1 seconde
             setTimeout(function () {
