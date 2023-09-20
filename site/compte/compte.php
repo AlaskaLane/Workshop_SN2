@@ -98,7 +98,7 @@ if ($result) {
                         <li class=" u-nav-item" id="non-resp"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                                 href="../index.html"
-                                style="padding: 10px 20px; color: #ffffff; font-size: 30px ;font-family: 'Roboto', sans-serif;">Acceuil</a>
+                                style="padding: 10px 20px; color: #ffffff; font-size: 30px ;font-family: 'Roboto', sans-serif;">Accueil</a>
                         <li class=" u-nav-item" id="non-resp"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                                 href="../questionnaire.html"
