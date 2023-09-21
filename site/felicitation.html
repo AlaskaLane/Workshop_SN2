@@ -71,27 +71,31 @@
     <script>
         // Attend que la page soit chargée
         document.addEventListener('DOMContentLoaded', function () {
-            // Affiche la pop-up
-            document.getElementById('modal').style.display = 'block';
-
-            // Lecture de l'audio
-            let myAudio = document.querySelector('#audio');
-            myAudio.play();
+            // Retarde l'audio de 2 secondes
+            setTimeout(function () {
+                let myAudio = document.querySelector('#audio');
+                myAudio.play();
+    
+            }, 2000); // 2000 millisecondes équivalent à 2 secondes
 
             let confettiAudio = document.querySelector('#audio-confetti');
-            confettiAudio.play();
-
+                confettiAudio.play();
+    
+            // Retarde l'apparition de la pop-up de 2 secondes
+            setTimeout(function () {
+                document.getElementById('modal').style.display = 'block';
+            }, 2000); // 2000 millisecondes équivalent à 2 secondes
+    
             // Fermer automatiquement la pop-up après 1 seconde
             setTimeout(function () {
                 document.getElementById('modal').style.display = 'none';
-            }, 10000); // 1000 millisecondes équivalent à 1 seconde
-
+            }, 10000); // 10000 millisecondes équivalent à 10 secondes
+    
             // Gestionnaire d'événement pour déclencher les confettis au clic sur le fond
             document.body.addEventListener('click', function () {
                 triggerConfetti();
             });
         });
-
         // Gestionnaire d'événement pour fermer la pop-up si l'utilisateur clique sur la croix
         document.getElementById('modal-close').addEventListener('click', function (e) {
             e.preventDefault(); // Empêche le lien de rediriger
