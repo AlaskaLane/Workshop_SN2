@@ -106,7 +106,7 @@ if ($result) {
                         </li>
                         <li class="u-nav-item" id="non-resp"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="../cours marcandella.html"
+                                href="../intro-linux.html"
                                 style="padding: 10px 20px; color: #ffffff;font-size: 30px ; font-family: 'Roboto', sans-serif;">Leçons</a>
                         </li>
                         <li class="u-nav-item" id="non-resp"><a
