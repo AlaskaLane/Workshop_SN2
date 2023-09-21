@@ -7,12 +7,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: max-content;
 }
 
-.container {
-    width: 100%;
-    max-width: 400px;
+.conteneur {
+    max-width: 700px;
+    position: relative;
+    top: 100px;
     background-color: #e6f7ff;
     /* Fond bleu clair */
     padding: 20px;
@@ -23,7 +24,7 @@ body {
     z-index: 8 !important;
 }
 
-.container:hover {
+.conteneur:hover {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     /* Effet de survol avec une ombre plus prononcée */
 }
@@ -33,8 +34,13 @@ h2 {
     margin-bottom: 20px;
 }
 
-.input-container {
+.input-conteneur {
     margin-bottom: 15px;
+    display: inline-block;
+    width: 49%;
+    justify-content: center;
+    align-items: center;
+
 }
 
 label {
@@ -88,13 +94,13 @@ button:hover {
 }
 
 /* Liens de navigation */
-p a {
+/* p a {
     display: inline-flex;
     justify-content: center;
     text-align: center;
     text-decoration: none;
     color: dodgerblue;
-}
+} */
 
 #txtpres {
     text-align: center;
@@ -125,9 +131,10 @@ p a {
 }
 
 /* Lien de retour */
-.container p:last-child a {
+/* .conteneur p:last-child a {
     margin-top: 20px;
-}
+} */
+
 
 @keyframes move {
     100% {

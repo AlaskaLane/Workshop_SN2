@@ -5,21 +5,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="felicitation.css">
+    <link rel="stylesheet" href="../site/badge/badge.css">
     <title>Gestion Compte</title>
+    <style>
+        body {
+            position: relative;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            z-index: -1;
+            /* Met le canvas en arrière-plan */
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .container {
+            /* Votre style pour le conteneur principal ici */
+            margin: auto;
+            /* Centre le contenu */
+            max-width: 800px;
+            /* Ajustez la largeur selon vos besoins */
+            padding: 20px;
+            background-color: #fff;
+            /* Couleur d'arrière-plan du conteneur */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Exemple d'ombre */
+            z-index: 1;
+            /* Place le contenu au-dessus du canvas */
+            position: relative;
+            /* Permet de positionner les éléments enfants */
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <h2>Bravo !
-            <?php echo $pseudo; ?> Tu a réussi le module !
+            <?php echo $pseudo; ?> Tu as réussi le module !
         </h2>
+        <canvas id="confetti-canvas"></canvas>
+
         <!-- <p id="txtpres">C'est votre page de gestion de compte.</p> -->
         <p id="blocliens">
             <!-- <a href="logout.php" id="lienpres">Déconnexion</a>
             <a href="reset-password.html" id="lienpres">Réinitialiser votre mot de passe</a> -->
             <a href="../site/index.html" id="lienpres">Accueil</a>
-        </p>
+        </p><audio id="audio" src="../site/badge/son/sound.mp3"></audio>
+        </p><audio id="audio-confetti" src="../site/badge/son/sound_confetti.mp3"></audio>
+        <div class="modal" id="modal">
+            <div class="modal-back"></div>
+            <div class="modal-container">
+                <img src="../site/badge/icon/html_icon.webp" alt="" height="30" width="40">
+                Félicitations tu as validé ton module HTML <br />
+                <a href="#" id="modal-close">x</a>
+            </div>
+        </div>
     </div>
+    <!-- Canvas des confettis -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script>
+        // Attend que la page soit chargée
+        document.addEventListener('DOMContentLoaded', function () {
+            // Affiche la pop-up
+            document.getElementById('modal').style.display = 'block';
+
+            // Lecture de l'audio
+            let myAudio = document.querySelector('#audio');
+            myAudio.play();
+
+            let confettiAudio = document.querySelector('#audio-confetti');
+            confettiAudio.play();
+
+            // Fermer automatiquement la pop-up après 1 seconde
+            setTimeout(function () {
+                document.getElementById('modal').style.display = 'none';
+            }, 10000); // 1000 millisecondes équivalent à 1 seconde
+
+            // Gestionnaire d'événement pour déclencher les confettis au clic sur le fond
+            document.body.addEventListener('click', function () {
+                triggerConfetti();
+            });
+        });
+
+        // Gestionnaire d'événement pour fermer la pop-up si l'utilisateur clique sur la croix
+        document.getElementById('modal-close').addEventListener('click', function (e) {
+            e.preventDefault(); // Empêche le lien de rediriger
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        // Fonction pour déclencher les confettis
+        function triggerConfetti() {
+            var myConfetti = confetti.create(document.querySelector('#confetti-canvas'), {
+                resize: true,
+                useWorker: true
+            });
+            myConfetti({
+                particleCount: 200,
+                spread: 360
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        const canvas = document.querySelector('#confetti-canvas');
+        function onButtonClick() {
+            var myConfetti = confetti.create(canvas, {
+                resize: true,
+                useWorker: true
+            });
+            myConfetti({
+                particleCount: 100,
+                spread: 360
+            });
+        }
+
+        // Appeler la fonction lors du chargement de la page
+        document.addEventListener('DOMContentLoaded', onButtonClick);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <ul class="background">
         <li></li>
         <li></li>
@@ -73,3 +180,5 @@
         <li></li>
     </ul>
 </body>
+
+</html>

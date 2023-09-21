@@ -77,14 +77,9 @@ button {
 
   }
 
- #modal-close,#modal-close-1,#modal-close-2,#modal-close-3,#modal-close-4,#modal-close-5 {
+ #modal-close {
     text-decoration: none;
     color: black;
-    position: absolute;
-    top: 10;
-    left: 475;
-    right: 10;
-    bottom: 10;
   }
 
   #modal-close:hover ,#modal-close-1:hover ,#modal-close-2:hover,#modal-close-3:hover,#modal-close-4:hover,#modal-close-5:hover {

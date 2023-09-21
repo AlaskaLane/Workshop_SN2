@@ -7,88 +7,760 @@ if (!isset($_SESSION["pseudo"])) {
     exit();
 }
 
-// Inclure le fichier de connexion à la base de données
+// Inclure le fichier de connexion à la base de données (db.php)
 include("db.php");
 
 // Récupérer le nom d'utilisateur de la session
 $pseudo = $_SESSION["pseudo"];
 
-// Vous pouvez ajouter d'autres fonctionnalités ici, comme afficher les données de l'utilisateur, des liens vers d'autres pages, etc.
+// Récupérer le statut de modérateur de l'utilisateur depuis la base de données
+$sql = "SELECT moderateur FROM compte WHERE pseudo = '$pseudo'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $statutMod = (int)$row["moderateur"];
+    
+    if ($statutMod === 1) {
+        $statut = "Modérateur";
+    } else {
+        $statut = "Utilisateur Standard";
+    }
+} else {
+    // En cas d'erreur, considérer l'utilisateur comme un utilisateur standard
+    $statut = "Utilisateur Standard";
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="compte.css">
-    <title>Gestion Compte</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Gallery">
+    <meta name="description" content="">
+    <title>AL</title>
+    <link rel="stylesheet" href="../nicepage.css" media="screen">
+    <link rel="stylesheet" href="../Gallery-1.css" media="screen">
+    <link rel="stylesheet" href="../compte/compte.css">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto?query=roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script class="u-script" type="text/javascript" src="../jquery-1.9.1.min.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.18.2, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "",
+        "url": "/"
+    }
+    </script>
+    <meta name="theme-color" content="#2590f4">
+    <meta property="og:title" content="Gallery 1">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="Fond_1.jpg">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
 </head>
 
-<body>
+<body data-home-page="https://website5862527.nicepage.io/Gallery-1.html?version=e162f95d-ce86-4024-a47b-404b73660c14"
+    data-home-page-title="Gallery 1" data-path-to-root="./" class="u-body u-xl-mode" data-lang="en">
+    <header class="u-clearfix u-container-align-center u-header u-header" id="sec-7f3a"
+        style="z-index: 10; width: 100%; position: fixed; top: 0;">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+                <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+                    <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base burger"
+                        href="#">
+                        <svg class="u-svg-link" viewBox="0 0 24 24">
+                            <use xlink:href="#menu-hamburger"></use>
+                        </svg>
+                        <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <rect y="1" width="16" height="2"></rect>
+                                <rect y="7" width="16" height="2"></rect>
+                                <rect y="13" width="16" height="2"></rect>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+                <div class="u-custom-menu u-nav-container" style="display: flex; z-index: 80;">
+                    <ul class="u-nav u-unstyled u-nav-1">
+                        <li class=" u-nav-item" id="non-resp"><a
+                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="../index.html"
+                                style="padding: 10px 20px; color: #ffffff; font-size: 30px ;font-family: 'Roboto', sans-serif;">Accueil</a>
+                        <li class=" u-nav-item" id="non-resp"><a
+                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="../questionnaire.html"
+                                style="padding: 10px 20px; color: #ffffff; font-size: 30px ;font-family: 'Roboto', sans-serif;">Questionnaire</a>
+                        </li>
+                        <li class="u-nav-item" id="non-resp"><a
+                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="../cours marcandella.html"
+                                style="padding: 10px 20px; color: #ffffff;font-size: 30px ; font-family: 'Roboto', sans-serif;">Leçons</a>
+                        </li>
+                        <li class="u-nav-item" id="non-resp"><a
+                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="#"
+                                style="padding: 10px 20px; color: #ffffff;font-size: 30px; font-family: 'Roboto', sans-serif;">Connexion</a>
+                        </li>
+                        <li class="u-nav-item" id="non-resp"><a
+                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                                href="contact.html"
+                                style="padding: 10px 20px; color: #ffffff;font-size: 30px; font-family: 'Roboto', sans-serif;">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="u-custom-menu u-nav-container-collapse">
+                    <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                        <div class="u-inner-container-layout u-sidenav-overflow">
+                            <div class="u-menu-close"></div>
+                            <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                                <!--<li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Home</a>-->
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="questionnaire.html">Questionnaire</a>
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="cours marcandella.html">Leçons</a>
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="../site/compte/compte.php">Connexion</a>
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                        href="contact.html">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+                </div>
+                <style class="darkreader darkreader--sync" media="screen"></style>
+            </nav>
+        </div>
+        <style class="darkreader darkreader--sync" media="screen"></style>
+        <style class="darkreader darkreader--sync" media="screen"></style>
+        <style class="darkreader darkreader--sync" media="screen"></style>
+        <style class="darkreader darkreader--sync" media="screen"></style>
+        <style class="darkreader darkreader--sync" media="screen"></style>
+    </header>
     <div class="container">
-        <h2>Bienvenue, <?php echo $pseudo; ?> !</h2>
-        <p id="txtpres">C'est votre page de gestion de compte.</p>
-        <p id="blocliens">
-            <a href="logout.php" id="lienpres">Déconnexion</a>
-            <a href="reset-password.html" id="lienpres">Réinitialiser votre mot de passe</a>
-            <a href="../index.html" id="lienpres">Accueil</a>
-        </p>
-    </div>
+        <h2>Bienvenue, <?php echo $pseudo; ?>!</h2>
+        <p>Statut : <?php echo $statut; ?></p>
 
-    <div class="background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <?php if ($statutMod === 1) { ?>
+        <!-- Section pour les modérateurs -->
+        <p>Vous avez des fonctionnalités de modérateur.</p>
+        <!-- Ajoutez ici les fonctionnalités spécifiques aux modérateurs -->
+        <?php } else { ?>
+        <!-- Section pour les utilisateurs standards -->
+        <p>Vous avez des fonctionnalités d'utilisateur standard.</p>
+        <!-- Ajoutez ici les fonctionnalités spécifiques aux utilisateurs -->
+        <?php } ?>
+        <div>
+            <p id="blocliens" style="display: flex; width : 500px; margin : 0">
+                <a href="logout.php" id="lienpres">Déconnexion</a>
+                <a href="reset-password.html" id="lienpres">Réinitialiser votre mot de passe</a>
+                <a href="../felicitation.html" id="lienpres">Validation de module</a>
+
+            </p>
+        </div>
     </div>
 </body>
+<div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<style>
+@keyframes move {
+    100% {
+        transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #3E1E68;
+    overflow: hidden;
+}
+
+.background span {
+    width: 9vmin;
+    height: 9vmin;
+    border-radius: 9vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation: move;
+    animation-duration: 45;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+
+.background span:nth-child(0) {
+    color: #E45A84;
+    top: 18%;
+    left: 38%;
+    animation-duration: 21s;
+    animation-delay: -6s;
+    transform-origin: 24vw 1vh;
+    box-shadow: 18vmin 0 2.74875809411142vmin currentColor;
+}
+
+.background span:nth-child(1) {
+    color: #FFACAC;
+    top: 66%;
+    left: 30%;
+    animation-duration: 14s;
+    animation-delay: -36s;
+    transform-origin: -20vw -11vh;
+    box-shadow: 18vmin 0 2.2737086446078427vmin currentColor;
+}
+
+.background span:nth-child(2) {
+    color: #583C87;
+    top: 37%;
+    left: 60%;
+    animation-duration: 21s;
+    animation-delay: -15s;
+    transform-origin: 15vw 17vh;
+    box-shadow: -18vmin 0 3.027322736212507vmin currentColor;
+}
+
+.background span:nth-child(3) {
+    color: #E45A84;
+    top: 86%;
+    left: 14%;
+    animation-duration: 34s;
+    animation-delay: -8s;
+    transform-origin: 13vw -23vh;
+    box-shadow: 18vmin 0 3.0597177946551577vmin currentColor;
+}
+
+.background span:nth-child(4) {
+    color: #FFACAC;
+    top: 73%;
+    left: 93%;
+    animation-duration: 47s;
+    animation-delay: -4s;
+    transform-origin: -6vw 7vh;
+    box-shadow: -18vmin 0 3.036164786573597vmin currentColor;
+}
+
+.background span:nth-child(5) {
+    color: #E45A84;
+    top: 4%;
+    left: 7%;
+    animation-duration: 46s;
+    animation-delay: -20s;
+    transform-origin: -21vw -12vh;
+    box-shadow: 18vmin 0 3.089162465000658vmin currentColor;
+}
+
+.background span:nth-child(6) {
+    color: #FFACAC;
+    top: 43%;
+    left: 4%;
+    animation-duration: 27s;
+    animation-delay: -47s;
+    transform-origin: -1vw 12vh;
+    box-shadow: -18vmin 0 2.8853806070147723vmin currentColor;
+}
+
+.background span:nth-child(7) {
+    color: #E45A84;
+    top: 18%;
+    left: 80%;
+    animation-duration: 43s;
+    animation-delay: -18s;
+    transform-origin: 14vw -15vh;
+    box-shadow: 18vmin 0 2.400821024980983vmin currentColor;
+}
+
+.background span:nth-child(8) {
+    color: #583C87;
+    top: 56%;
+    left: 31%;
+    animation-duration: 12s;
+    animation-delay: -6s;
+    transform-origin: -14vw 11vh;
+    box-shadow: 18vmin 0 2.818042073405385vmin currentColor;
+}
+
+.background span:nth-child(9) {
+    color: #583C87;
+    top: 38%;
+    left: 95%;
+    animation-duration: 15s;
+    animation-delay: -31s;
+    transform-origin: -5vw 5vh;
+    box-shadow: -18vmin 0 2.2509579799081214vmin currentColor;
+}
+
+.background span:nth-child(10) {
+    color: #FFACAC;
+    top: 5%;
+    left: 5%;
+    animation-duration: 8s;
+    animation-delay: -31s;
+    transform-origin: 11vw 11vh;
+    box-shadow: -18vmin 0 3.197822981605429vmin currentColor;
+}
+
+.background span:nth-child(11) {
+    color: #583C87;
+    top: 1%;
+    left: 77%;
+    animation-duration: 21s;
+    animation-delay: -5s;
+    transform-origin: -1vw 6vh;
+    box-shadow: 18vmin 0 2.9920552839806467vmin currentColor;
+}
+
+.background span:nth-child(12) {
+    color: #FFACAC;
+    top: 39%;
+    left: 10%;
+    animation-duration: 26s;
+    animation-delay: -47s;
+    transform-origin: 15vw 7vh;
+    box-shadow: 18vmin 0 3.1696692908272865vmin currentColor;
+}
+
+.background span:nth-child(13) {
+    color: #FFACAC;
+    top: 34%;
+    left: 5%;
+    animation-duration: 16s;
+    animation-delay: -29s;
+    transform-origin: -23vw -5vh;
+    box-shadow: 18vmin 0 3.085531596565922vmin currentColor;
+}
+
+.background span:nth-child(14) {
+    color: #583C87;
+    top: 48%;
+    left: 3%;
+    animation-duration: 37s;
+    animation-delay: -32s;
+    transform-origin: -6vw 25vh;
+    box-shadow: 18vmin 0 3.0990114380354448vmin currentColor;
+}
+
+.background span:nth-child(15) {
+    color: #E45A84;
+    top: 93%;
+    left: 52%;
+    animation-duration: 45s;
+    animation-delay: -21s;
+    transform-origin: 24vw 20vh;
+    box-shadow: 18vmin 0 2.3269191859919514vmin currentColor;
+}
+
+.background span:nth-child(16) {
+    color: #E45A84;
+    top: 94%;
+    left: 95%;
+    animation-duration: 25s;
+    animation-delay: -46s;
+    transform-origin: -22vw -4vh;
+    box-shadow: 18vmin 0 3.2338256212066896vmin currentColor;
+}
+
+.background span:nth-child(17) {
+    color: #FFACAC;
+    top: 68%;
+    left: 48%;
+    animation-duration: 6s;
+    animation-delay: -39s;
+    transform-origin: 10vw 21vh;
+    box-shadow: 18vmin 0 3.0162818552120205vmin currentColor;
+}
+
+.background span:nth-child(18) {
+    color: #E45A84;
+    top: 84%;
+    left: 99%;
+    animation-duration: 40s;
+    animation-delay: -30s;
+    transform-origin: 3vw 3vh;
+    box-shadow: 18vmin 0 3.1814909472187636vmin currentColor;
+}
+
+.background span:nth-child(19) {
+    color: #FFACAC;
+    top: 36%;
+    left: 6%;
+    animation-duration: 54s;
+    animation-delay: -33s;
+    transform-origin: -16vw 5vh;
+    box-shadow: -18vmin 0 3.0465394131963137vmin currentColor;
+}
+
+.background span:nth-child(20) {
+    color: #583C87;
+    top: 97%;
+    left: 66%;
+    animation-duration: 8s;
+    animation-delay: -32s;
+    transform-origin: -17vw -19vh;
+    box-shadow: -18vmin 0 2.992258321546482vmin currentColor;
+}
+
+.background span:nth-child(21) {
+    color: #E45A84;
+    top: 14%;
+    left: 1%;
+    animation-duration: 7s;
+    animation-delay: -39s;
+    transform-origin: 1vw 21vh;
+    box-shadow: 18vmin 0 2.761451718229774vmin currentColor;
+}
+
+.background span:nth-child(22) {
+    color: #E45A84;
+    top: 43%;
+    left: 95%;
+    animation-duration: 17s;
+    animation-delay: -30s;
+    transform-origin: 7vw 15vh;
+    box-shadow: -18vmin 0 2.59084727979798vmin currentColor;
+}
+
+.background span:nth-child(23) {
+    color: #FFACAC;
+    top: 57%;
+    left: 34%;
+    animation-duration: 39s;
+    animation-delay: -36s;
+    transform-origin: 17vw 7vh;
+    box-shadow: 18vmin 0 2.5307798277775113vmin currentColor;
+}
+
+.background span:nth-child(24) {
+    color: #583C87;
+    top: 50%;
+    left: 48%;
+    animation-duration: 55s;
+    animation-delay: -2s;
+    transform-origin: -21vw -7vh;
+    box-shadow: -18vmin 0 2.8979057429408477vmin currentColor;
+}
+
+.background span:nth-child(25) {
+    color: #FFACAC;
+    top: 44%;
+    left: 83%;
+    animation-duration: 44s;
+    animation-delay: -46s;
+    transform-origin: 7vw 9vh;
+    box-shadow: -18vmin 0 2.6007260140554154vmin currentColor;
+}
+
+.background span:nth-child(26) {
+    color: #E45A84;
+    top: 59%;
+    left: 56%;
+    animation-duration: 39s;
+    animation-delay: -47s;
+    transform-origin: 19vw -9vh;
+    box-shadow: 18vmin 0 2.670916805227249vmin currentColor;
+}
+
+.background span:nth-child(27) {
+    color: #FFACAC;
+    top: 9%;
+    left: 9%;
+    animation-duration: 39s;
+    animation-delay: -11s;
+    transform-origin: 1vw 24vh;
+    box-shadow: -18vmin 0 2.357982804317109vmin currentColor;
+}
+
+.background span:nth-child(28) {
+    color: #E45A84;
+    top: 64%;
+    left: 70%;
+    animation-duration: 34s;
+    animation-delay: -24s;
+    transform-origin: -3vw -14vh;
+    box-shadow: -18vmin 0 2.530609693482945vmin currentColor;
+}
+
+.background span:nth-child(29) {
+    color: #583C87;
+    top: 92%;
+    left: 55%;
+    animation-duration: 31s;
+    animation-delay: -10s;
+    transform-origin: -13vw 21vh;
+    box-shadow: 18vmin 0 2.769928860616213vmin currentColor;
+}
+
+.background span:nth-child(30) {
+    color: #E45A84;
+    top: 87%;
+    left: 57%;
+    animation-duration: 51s;
+    animation-delay: -45s;
+    transform-origin: 20vw 19vh;
+    box-shadow: -18vmin 0 2.977036999359625vmin currentColor;
+}
+
+.background span:nth-child(31) {
+    color: #FFACAC;
+    top: 57%;
+    left: 25%;
+    animation-duration: 37s;
+    animation-delay: -35s;
+    transform-origin: 1vw -23vh;
+    box-shadow: -18vmin 0 3.170124477646973vmin currentColor;
+}
+
+.background span:nth-child(32) {
+    color: #FFACAC;
+    top: 65%;
+    left: 36%;
+    animation-duration: 27s;
+    animation-delay: -47s;
+    transform-origin: 25vw -9vh;
+    box-shadow: 18vmin 0 2.2689971201043226vmin currentColor;
+}
+
+.background span:nth-child(33) {
+    color: #FFACAC;
+    top: 25%;
+    left: 70%;
+    animation-duration: 32s;
+    animation-delay: -2s;
+    transform-origin: 17vw 12vh;
+    box-shadow: 18vmin 0 2.799622780839865vmin currentColor;
+}
+
+.background span:nth-child(34) {
+    color: #E45A84;
+    top: 72%;
+    left: 47%;
+    animation-duration: 49s;
+    animation-delay: -24s;
+    transform-origin: 16vw 22vh;
+    box-shadow: -18vmin 0 2.2728221845702405vmin currentColor;
+}
+
+.background span:nth-child(35) {
+    color: #FFACAC;
+    top: 16%;
+    left: 31%;
+    animation-duration: 25s;
+    animation-delay: -30s;
+    transform-origin: 21vw -14vh;
+    box-shadow: 18vmin 0 2.5697671742628208vmin currentColor;
+}
+
+.background span:nth-child(36) {
+    color: #583C87;
+    top: 24%;
+    left: 19%;
+    animation-duration: 13s;
+    animation-delay: -21s;
+    transform-origin: 25vw 10vh;
+    box-shadow: -18vmin 0 2.6807903054427302vmin currentColor;
+}
+
+.background span:nth-child(37) {
+    color: #FFACAC;
+    top: 9%;
+    left: 53%;
+    animation-duration: 37s;
+    animation-delay: -21s;
+    transform-origin: 22vw 4vh;
+    box-shadow: 18vmin 0 2.7579728780923256vmin currentColor;
+}
+
+.background span:nth-child(38) {
+    color: #583C87;
+    top: 99%;
+    left: 28%;
+    animation-duration: 50s;
+    animation-delay: -23s;
+    transform-origin: 12vw -12vh;
+    box-shadow: -18vmin 0 3.052463845771789vmin currentColor;
+}
+
+.background span:nth-child(39) {
+    color: #583C87;
+    top: 65%;
+    left: 90%;
+    animation-duration: 19s;
+    animation-delay: -50s;
+    transform-origin: 19vw 19vh;
+    box-shadow: -18vmin 0 2.295158302722617vmin currentColor;
+}
+
+.background span:nth-child(40) {
+    color: #583C87;
+    top: 88%;
+    left: 98%;
+    animation-duration: 42s;
+    animation-delay: -26s;
+    transform-origin: -7vw 24vh;
+    box-shadow: 18vmin 0 2.575206622048251vmin currentColor;
+}
+
+.background span:nth-child(41) {
+    color: #E45A84;
+    top: 58%;
+    left: 15%;
+    animation-duration: 17s;
+    animation-delay: -32s;
+    transform-origin: 16vw -5vh;
+    box-shadow: -18vmin 0 2.458211885811381vmin currentColor;
+}
+
+.background span:nth-child(42) {
+    color: #FFACAC;
+    top: 65%;
+    left: 61%;
+    animation-duration: 50s;
+    animation-delay: -42s;
+    transform-origin: -21vw -21vh;
+    box-shadow: -18vmin 0 2.3219022871672164vmin currentColor;
+}
+
+.background span:nth-child(43) {
+    color: #583C87;
+    top: 19%;
+    left: 74%;
+    animation-duration: 53s;
+    animation-delay: -15s;
+    transform-origin: 5vw -23vh;
+    box-shadow: -18vmin 0 2.8877773065822887vmin currentColor;
+}
+
+.background span:nth-child(44) {
+    color: #FFACAC;
+    top: 48%;
+    left: 8%;
+    animation-duration: 22s;
+    animation-delay: -6s;
+    transform-origin: -9vw -10vh;
+    box-shadow: 18vmin 0 2.597360282529846vmin currentColor;
+}
+
+.background span:nth-child(45) {
+    color: #583C87;
+    top: 94%;
+    left: 8%;
+    animation-duration: 15s;
+    animation-delay: -9s;
+    transform-origin: -4vw -5vh;
+    box-shadow: -18vmin 0 2.6156248019575994vmin currentColor;
+}
+
+.background span:nth-child(46) {
+    color: #583C87;
+    top: 54%;
+    left: 21%;
+    animation-duration: 52s;
+    animation-delay: -22s;
+    transform-origin: 4vw -18vh;
+    box-shadow: -18vmin 0 2.336024141869637vmin currentColor;
+}
+
+.background span:nth-child(47) {
+    color: #FFACAC;
+    top: 98%;
+    left: 80%;
+    animation-duration: 49s;
+    animation-delay: -43s;
+    transform-origin: 5vw 13vh;
+    box-shadow: -18vmin 0 2.5424516291416204vmin currentColor;
+}
+
+.background span:nth-child(48) {
+    color: #583C87;
+    top: 83%;
+    left: 36%;
+    animation-duration: 28s;
+    animation-delay: -43s;
+    transform-origin: 25vw -7vh;
+    box-shadow: 18vmin 0 2.743013444314495vmin currentColor;
+}
+
+.background span:nth-child(49) {
+    color: #FFACAC;
+    top: 50%;
+    left: 76%;
+    animation-duration: 39s;
+    animation-delay: -21s;
+    transform-origin: -19vw -1vh;
+    box-shadow: 18vmin 0 2.4087962029140924vmin currentColor;
+}
+</style>
+
+<body>
+
 
 </html>
