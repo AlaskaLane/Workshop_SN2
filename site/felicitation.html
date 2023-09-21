@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,8 @@
 
         #confetti-canvas {
             position: fixed;
-            z-index: -1; /* Met le canvas en arrière-plan */
+            z-index: -1;
+            /* Met le canvas en arrière-plan */
             top: 0;
             left: 0;
             width: 100vw;
@@ -23,23 +25,30 @@
 
         .container {
             /* Votre style pour le conteneur principal ici */
-            margin: auto; /* Centre le contenu */
-            max-width: 800px; /* Ajustez la largeur selon vos besoins */
+            margin: auto;
+            /* Centre le contenu */
+            max-width: 800px;
+            /* Ajustez la largeur selon vos besoins */
             padding: 20px;
-            background-color: #fff; /* Couleur d'arrière-plan du conteneur */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Exemple d'ombre */
-            z-index: 1; /* Place le contenu au-dessus du canvas */
-            position: relative; /* Permet de positionner les éléments enfants */
+            background-color: #fff;
+            /* Couleur d'arrière-plan du conteneur */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Exemple d'ombre */
+            z-index: 1;
+            /* Place le contenu au-dessus du canvas */
+            position: relative;
+            /* Permet de positionner les éléments enfants */
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Bravo !
             <?php echo $pseudo; ?> Tu as réussi le module !
         </h2>
         <canvas id="confetti-canvas"></canvas>
-        
+
         <!-- <p id="txtpres">C'est votre page de gestion de compte.</p> -->
         <p id="blocliens">
             <!-- <a href="logout.php" id="lienpres">Déconnexion</a>
@@ -51,7 +60,7 @@
             <div class="modal-back"></div>
             <div class="modal-container">
                 <img src="../site/badge/icon/html_icon.webp" alt="" height="30" width="40">
-                Félicitations tu as validé ton module HTML  <br />
+                Félicitations tu as validé ton module HTML <br />
                 <a href="#" id="modal-close">x</a>
             </div>
         </div>
@@ -64,7 +73,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             // Affiche la pop-up
             document.getElementById('modal').style.display = 'block';
-            
+
             // Lecture de l'audio
             let myAudio = document.querySelector('#audio');
             myAudio.play();
@@ -96,27 +105,27 @@
                 useWorker: true
             });
             myConfetti({
-                particleCount: 100,
-                spread: 160
+                particleCount: 200,
+                spread: 360
             });
         }
     </script>
     <script type="text/javascript">
         const canvas = document.querySelector('#confetti-canvas');
-        function onButtonClick(){
+        function onButtonClick() {
             var myConfetti = confetti.create(canvas, {
                 resize: true,
                 useWorker: true
             });
             myConfetti({
                 particleCount: 100,
-                spread: 160
+                spread: 360
             });
         }
 
         // Appeler la fonction lors du chargement de la page
         document.addEventListener('DOMContentLoaded', onButtonClick);
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <ul class="background">
         <li></li>
@@ -171,6 +180,5 @@
         <li></li>
     </ul>
 </body>
+
 </html>
-
-
