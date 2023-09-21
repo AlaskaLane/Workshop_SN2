@@ -416,7 +416,7 @@
 
             <!-- Question 5: Besoin en développement (hidden initially) -->
             <div id="question5DevNeedContainer" style="display: none;">
-                <p>Question 5 - Besoin en développement : Vous avez besoin de... ?</p>
+                <p>Question 5 - Vous avez besoin de... ?</p>
                 <label>
                     <input type="radio" name="needs" value="Créer un site vitrine"> Créer un site vitrine, peu interactif.
                 </label>
@@ -427,7 +427,7 @@
 
             <!-- Question 5: Besoin en développement (hidden initially) -->
             <div id="question5DevWantContainer" style="display: none;">
-                <p>Question 5 - Besoin en développement : Vous souhaitez... ?</p>
+                <p>Question 5 - Vous souhaitez... ?</p>
                 <label>
                     <input type="radio" name="wants" value="Créer un site vitrine"> Créer un site vitrine, peu interactif.
                 </label>
@@ -451,14 +451,14 @@
             var question5DevWantContainer = document.getElementById('question5DevWantContainer');
             var nextButton = document.getElementById('nextButton');
             var learningContext; // Declare learningContext variable
-
+        
             var currentQuestion = 1;
-
-            nextButton.addEventListener('click', function () {
+        
+            nextButton.addEventListener('click', function() {
                 // Check if both "Développement" and "Réseaux" checkboxes are selected
                 var developmentCheckbox = document.querySelector('input[name="development"]');
                 var networkingCheckbox = document.querySelector('input[name="networking"]');
-
+        
                 if (currentQuestion === 1) {
                     // Valider la première question (s'il y a des cases cochées)
                     if (!developmentCheckbox.checked && !networkingCheckbox.checked) {
@@ -472,150 +472,92 @@
                     if (networkingCheckbox.checked) {
                         question2Networking.style.display = 'block';
                     }
+                    currentQuestion = 2;
                 } else if (currentQuestion === 2) {
-                    // Valider la deuxième question (sélection d'un niveau de compétence)
-                    var developmentSkillLevelRadios = document.querySelectorAll('input[name="developmentSkillLevel"]');
-                    var networkingSkillLevelRadios = document.querySelectorAll('input[name="networkingSkillLevel"]');
-                    var isDevelopmentChecked = developmentCheckbox.checked;
-                    var isNetworkingChecked = networkingCheckbox.checked;
-
-                    if (isDevelopmentChecked) {
-                        var developmentSkillLevelSelected = false;
-                        for (var i = 0; i < developmentSkillLevelRadios.length; i++) {
-                            if (developmentSkillLevelRadios[i].checked) {
-                                developmentSkillLevelSelected = true;
-                                break;
-                            }
-                        }
-                        if (!developmentSkillLevelSelected) {
-                            alert("Veuillez sélectionner un niveau de compétence en développement.");
-                            return;
-                        }
+                    // Valider la deuxième question (s'il y a au moins un niveau de compétence sélectionné)
+                    var developmentSkillLevel = document.querySelector('input[name="developmentSkillLevel"]:checked');
+                    var networkingSkillLevel = document.querySelector('input[name="networkingSkillLevel"]:checked');
+                    if (!developmentSkillLevel && !networkingSkillLevel) {
+                        alert("Veuillez sélectionner au moins un niveau de compétence.");
+                        return;
                     }
-
-                    if (isNetworkingChecked) {
-                        var networkingSkillLevelSelected = false;
-                        for (var i = 0; i < networkingSkillLevelRadios.length; i++) {
-                            if (networkingSkillLevelRadios[i].checked) {
-                                networkingSkillLevelSelected = true;
-                                break;
-                            }
-                        }
-                        if (!networkingSkillLevelSelected) {
-                            alert("Veuillez sélectionner un niveau de compétence en réseaux.");
-                            return;
-                        }
+                    if (developmentSkillLevel) {
+                        question2Development.style.display = 'none';
                     }
-
-                    // Sauvegarde le contexte d'apprentissage (professionnel, projet personnel, découverte / orientation)
-                    if (isDevelopmentChecked) {
-                        learningContext = 'Développement';
-                    } else if (isNetworkingChecked) {
-                        learningContext = 'Réseaux';
+                    if (networkingSkillLevel) {
+                        question2Networking.style.display = 'none';
                     }
-
-                    question2Development.style.display = 'none';
-                    question2Networking.style.display = 'none';
                     question3Container.style.display = 'block';
+                    currentQuestion = 3;
                 } else if (currentQuestion === 3) {
-                    // Valider la troisième question (sélection du domaine d'intérêt)
-                    var interestAreaRadios = document.querySelectorAll('input[name="interestArea"]');
-                    var interestAreaSelected = false;
-                    for (var i = 0; i < interestAreaRadios.length; i++) {
-                        if (interestAreaRadios[i].checked) {
-                            interestAreaSelected = true;
-                            break;
-                        }
-                    }
-                    if (!interestAreaSelected) {
-                        alert("Veuillez sélectionner un domaine d'intérêt.");
+                    // Valider la troisième question (s'il y a une option sélectionnée)
+                    learningContext = document.querySelector('input[name="learningContext"]:checked');
+                    if (!learningContext) {
+                        alert("Veuillez sélectionner le cadre d'apprentissage.");
                         return;
                     }
-
-                    // Afficher la question suivante en fonction du contexte d'apprentissage
-                    if (learningContext === 'Développement') {
+                    // Check if "Development" or "Réseaux" was selected at Question 1
+                    if (developmentCheckbox && developmentCheckbox.checked && !networkingCheckbox.checked) {
+                        if (learningContext.value === "Découverte / Orientation") {
+                            question4DevContainer.style.display = 'block';
+                            question4NetContainer.style.display = 'none'; // Hide networking-related question 4
+                        } else {
+                            question4DevContainer.style.display = 'block';
+                            question4NetContainer.style.display = 'none'; // Hide networking-related question 4
+                        }
+                    } else if (networkingCheckbox && networkingCheckbox.checked && !developmentCheckbox.checked) {
+                        if (learningContext.value === "Découverte / Orientation") {
+                            question4DevContainer.style.display = 'none'; // Hide development-related question 4
+                            question4NetContainer.style.display = 'block';
+                        } else {
+                            question4DevContainer.style.display = 'none'; // Hide development-related question 4
+                            question4NetContainer.style.display = 'block';
+                        }
+                    } else if (developmentCheckbox.checked && networkingCheckbox.checked) {
                         question3Container.style.display = 'none';
-                        question4DevContainer.style.display = 'block';
-                    } else if (learningContext === 'Réseaux') {
-                        question3Container.style.display = 'none';
-                        question4NetContainer.style.display = 'block';
-                    } else {
-                        // Si le contexte n'est pas encore sélectionné, afficher une erreur
-                        alert("Une erreur s'est produite. Veuillez recommencer le questionnaire.");
-                        return;
-                    }
-                } else if (currentQuestion === 4) {
-                    // Valider la quatrième question (sélection des besoins ou des souhaits en développement)
-                    var needsRadios = document.querySelectorAll('input[name="needs"]');
-                    var wantsRadios = document.querySelectorAll('input[name="wants"]');
-                    var isDevChecked = developmentCheckbox.checked;
-                    var isNetChecked = networkingCheckbox.checked;
-
-                    if (isDevChecked) {
-                        var devNeedsSelected = false;
-                        for (var i = 0; i < needsRadios.length; i++) {
-                            if (needsRadios[i].checked) {
-                                devNeedsSelected = true;
-                                break;
-                            }
-                        }
-                        if (!devNeedsSelected) {
-                            alert("Veuillez sélectionner un besoin en développement.");
-                            return;
-                        }
-                    }
-
-                    if (isNetChecked) {
-                        var netNeedsSelected = false;
-                        for (var i = 0; i < wantsRadios.length; i++) {
-                            if (wantsRadios[i].checked) {
-                                netNeedsSelected = true;
-                                break;
-                            }
-                        }
-                        if (!netNeedsSelected) {
-                            alert("Veuillez sélectionner un souhait en développement.");
-                            return;
-                        }
-                    }
-
-                    // Afficher la question suivante en fonction du contexte d'apprentissage
-                    if (learningContext === 'Développement') {
+                        question4BothContainer.style.display = 'block';
                         question4DevContainer.style.display = 'none';
-                        question5DevNeedContainer.style.display = 'block';
-                    } else if (learningContext === 'Réseaux') {
                         question4NetContainer.style.display = 'none';
-                        question5DevWantContainer.style.display = 'block';
-                    } else {
-                        // Si le contexte n'est pas encore sélectionné, afficher une erreur
-                        alert("Une erreur s'est produite. Veuillez recommencer le questionnaire.");
+                        currentQuestion = 4;
                         return;
                     }
+                    question3Container.style.display = 'none';
+                    currentQuestion = 4;
+                } else if (currentQuestion === 4) {
+                    var interestArea = document.querySelector('input[name="interestArea"]:checked');
+                    if (!interestArea) {
+                        alert("Veuillez sélectionner un domaine qui vous intéresse.");
+                        return;
+                    }
+                    if (developmentCheckbox.checked && networkingCheckbox.checked) {
+                        question4BothContainer.style.display = 'none';
+                    }
+                    if (developmentCheckbox.checked) {
+                        question4DevContainer.style.display = 'none';
+                    }
+                    if (networkingCheckbox.checked) {
+                        question4NetContainer.style.display = 'none';
+                    }
+                    // Display the appropriate Question 5 container based on learningContext
+                    if (learningContext.value !== "Découverte / Orientation") {
+                        question5DevNeedContainer.style.display = 'block';
+                    } else {
+                        question5DevWantContainer.style.display = 'block';
+                    }
+                    currentQuestion = 5;
                 } else if (currentQuestion === 5) {
-                    // Valider la cinquième question (afficher un message de confirmation)
-                    alert("Merci d'avoir répondu au questionnaire. Vos réponses ont été enregistrées.");
-                    document.getElementById("questionnaireForm").reset();
-                    // Réinitialiser le questionnaire pour qu'il puisse être rempli à nouveau si nécessaire
-                    resetQuestionnaire();
+                    // Valider la cinquième question (s'il y a une option sélectionnée)
+                    var needs = document.querySelector('input[name="needs"]:checked');
+                    var wants = document.querySelector('input[name="wants"]:checked');
+                    if (!needs && !wants) {
+                        alert("Veuillez sélectionner au moins une option.");
+                        return;
+                    }
+                    // Soumettre le formulaire si toutes les questions sont validées
+                    document.getElementById('questionnaireForm').submit();
                 }
-
-                currentQuestion++; // Passer à la question suivante
             });
-
-            // Fonction pour réinitialiser le questionnaire
-            function resetQuestionnaire() {
-                currentQuestion = 1;
-                question1Container.style.display = 'block';
-                question2Development.style.display = 'none';
-                question2Networking.style.display = 'none';
-                question3Container.style.display = 'none';
-                question4DevContainer.style.display = 'none';
-                question4NetContainer.style.display = 'none';
-                question4BothContainer.style.display = 'none';
-                question5DevNeedContainer.style.display = 'none';
-                question5DevWantContainer.style.display = 'none';
-            }
-        </script>
+        </script>          
     </body>
 
     <style class="darkreader darkreader--sync" media="screen"></style>
